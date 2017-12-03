@@ -17,4 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/admin', [
+    'uses' => 'AdminController@getAdminPage',
+    'as' => 'admin',
+    'middleware' => 'roles',
+    'roles' => ['Admin']
+]);
+
 Route::get('/home', 'HomeController@index')->name('home');
